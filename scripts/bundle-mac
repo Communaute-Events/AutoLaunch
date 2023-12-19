@@ -1,0 +1,16 @@
+#!/bin/bash
+
+neu build
+sp="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+content_path="$sp/../build/AutoLaunch.app/Contents"
+
+test -d "$content_path" && rm -rf "$(dirname "$content_path")"
+mkdir -p "$content_path/MacOS"
+mkdir "$content_path/Resources"
+cp "$sp/assets/Info.plist" "$content_path/Info.plist"
+cp "$sp/../dist/AutoLaunch/AutoLaunch-mac_universal" "$content_path/MacOS/executable"
+cp "$sp/../dist/AutoLaunch/resources.neu" "$content_path/MacOS/resources.neu"
+cp "$sp/assets/icon.icns" "$content_path/Resources/AppIcon.icns"
+chmod +x "$content_path/MacOS/executable"
+open "$content_path/../../"
+echo "Built AutoLaunch.app"
