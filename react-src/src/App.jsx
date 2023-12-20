@@ -1,4 +1,6 @@
 import { useEffect } from 'react'
+import { checkIntegrity } from './installer/macos';
+// import { os } from '@neutralinojs/lib';
 import './App.css';
 
 // Import filesystem namespace
@@ -17,7 +19,16 @@ function App() {
 
   return (
     <div className="App">
-      My Neutralinojs App
+      AutoLaunch Dev
+      <br/>
+      <button onClick={checkIntegrity}>Check integrity</button>
+      {/* <button onClick={()=>{
+        os.execCommand("say hi")
+      }}>Check pop</button> */}
+      <br/>
+      Launch Args: {window.NL_ARGS}
+      <br/>
+      Current Data: {window.DATA ? window.DATA : "None"}
     </div>
   );
 }

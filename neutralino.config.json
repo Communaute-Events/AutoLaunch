@@ -6,10 +6,17 @@
   "url": "/",
   "enableServer": true,
   "enableNativeAPI": true,
+  "tokenSecurity": "none",
   "nativeAllowList": [
     "app.*",
-    "filesystem.readDirectory"
+    "os.*",
+    "filesystem.*",
+    "init.*"
   ],
+  "logging": {
+    "enabled": true,
+    "writeToLogFile": true
+  },
   "modes": {
     "window": {
       "title": "AutoLaunch",
@@ -17,7 +24,8 @@
       "height": 500,
       "minWidth": 400,
       "minHeight": 200,
-      "icon": "/react-src/public/logo192.png"
+      "icon": "/react-src/public/logo192.png",
+      "enableInspector": true
     }
   },
   "cli": {
@@ -33,6 +41,27 @@
       "initCommand": "npm install",
       "devCommand": "BROWSER=none npm start",
       "buildCommand": "npm run build"
+    }
+  },
+  "buildScript": {
+    "mac": {
+      "architecture": ["x64", "arm64", "universal"],
+      "minimumOS": "10.13.0",
+      "appName": "AutoLaunch",
+      "appBundleName": "AutoLaunch",
+      "appIdentifier": "events.commu.autolaunch",
+      "appIcon":  "assets/icon.icns"
+    },
+    "win": {
+      "architecture": ["x64"],
+      "appName": "AutoLaunch",
+      "appIcon": "assets/icon.ico"
+    },
+    "linux": {
+      "architecture": ["x64", "arm64", "armhf"],
+      "appName": "AutoLaunch",
+      "appIcon": "assets/icon.png",
+      "appIconLocation": "/usr/share/AutoLaunch/icon.png"
     }
   }
 }
