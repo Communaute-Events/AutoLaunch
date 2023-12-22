@@ -22,7 +22,6 @@ export async function checkIntegrity() {
     if (!exists && err.code === "NE_FS_NOPATHE") {
         await filesystem.createDirectory(appSupportPath)
     }
-
     // Check for url-scheme handler and download
     [exists, err] = await pathExists(`${appSupportPath}/url-handler.app`)
     if (!exists && err.code === "NE_FS_NOPATHE") {

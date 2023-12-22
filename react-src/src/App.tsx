@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import React from "react"
 import { checkIntegrity } from './installer/macos';
 // import { os } from '@neutralinojs/lib';
 import './App.css';
